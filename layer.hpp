@@ -163,7 +163,7 @@ class Dense : public Layer {
 		const float categorical_crossentropy(const Eigen::MatrixXf &Y, float &accuracy) {
 			delta = Y - H;
 			int acc = 0;
-		    for (size_t j = 0; j < H.cols(); j ++)
+		    	for (size_t j = 0; j < H.cols(); j ++)
 			{
 				acc = H.col(j).maxCoeff() == Y.col(j).maxCoeff() ? acc + 1 : acc;
 			}      
