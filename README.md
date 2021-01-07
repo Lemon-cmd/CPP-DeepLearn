@@ -1,4 +1,4 @@
-# CPP-DeepLearn
+# CPP-DeepLearning
 Template for C++ neural network variants built via Eigen Library
 
 
