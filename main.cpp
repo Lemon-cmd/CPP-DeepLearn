@@ -1,4 +1,4 @@
-#include "network.hpp"
+#include "./model/network.hpp"
 
 
 #define L std::unique_ptr<Layer>
