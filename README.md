@@ -18,11 +18,11 @@ or
 ```
 
 The parameter of the ***network*** object is left blank as the optional cost function parameter (string) is set as mean-square-error.\
-The user can set the parameter as "mean-square-error" or "cross-entropy-error". (See template **network.hpp**)   
+The user can set the parameter as "mean_square_error" or "categorical_cross_entropy". (See template **network.hpp**)   
 
 e.g.,
 ```
-   std::unique_ptr<network> net (new network("cross-entropy-error")); 
+   std::unique_ptr<network> net (new network("categorical_cross_entropy")); 
 ```
 
 To create layers of the network, one must create a unique pointer to the abstract ***Layer*** class while setting it to the desired object.
