@@ -1,5 +1,5 @@
 # CPP-DeepLearning
-Template for C++ neural network variants built via Eigen Library
+Template for C++ neural network variants built using the Eigen Library
 
 
 **Usage**
@@ -25,14 +25,11 @@ e.g.,
    std::unique_ptr<network> net (new network("cross-entropy-error")); 
 ```
 
-To create layers of the network, one must create their pointer to the abstract ***Layer*** class while setting it to the desired object.
+To create layers of the network, one must create a unique pointer to the abstract ***Layer*** class while setting it to the desired object.
     
 e.g.,
 ```
-  Layer* l0 = new Embedding<521, 1, 20>();
-  Layer* l1 = new LSTM<150, 100, 20>();
-  Layer* l2 = new Dense<521, 150, 20>("softmax");
-  net->add(l0); net->add(l1); net->add(l2);
+   net.add(std::unique_ptr<Layer> (new embedding <560, 100, 100>()));
 ```
 
 For further details, take a look at the ***main.cpp*** file
