@@ -2,7 +2,7 @@
 Template for C++ neural network variants built using the Eigen Library
 
 
-**Usage**
+**Usage**     
 In order to create a network, one must first construct the network object.
 
 ```
