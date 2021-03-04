@@ -1,6 +1,6 @@
 # CPP-DeepLearn
 
-__DPP__ is a C++ deep learning library built using Eigen and thread library. It provides an easy way to create neural networks similar to that of keras. 
+__DPP__ is a C++ deep learning library built using Eigen and thread library. It provides an easy way to create neural networks similar to that of Keras. 
 
 ## Usage    
 __Note__: All classes exist under the namespace __dpp__.
