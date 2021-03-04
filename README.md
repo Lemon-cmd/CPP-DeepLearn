@@ -37,7 +37,7 @@ Once all layers are __defined__ and the model is wished to be __trained__, it is
    model->evaluate(X_test, Y_test)                                         // test
 ```
 
-Layers can be created separately as well and are required to be initialized first before trainning.
+Layers can be created separately as well and are required to be __initialized__ first before trainning.
 
 ```c++
    // Dense (neurons, learning rate, activation, optimization rate) 
