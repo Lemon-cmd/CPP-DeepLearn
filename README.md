@@ -6,7 +6,10 @@ __DPP__ is a C++ deep learning library built using Eigen and thread library. It 
 To create a model, one must first construct the __sequential__ class.
 
 ```c++
+   using namespace dpp;
+   
    std::unique_ptr<Sequential> model {new Sequential()}; 
+   
    // or
    Sequential model;
 ```
