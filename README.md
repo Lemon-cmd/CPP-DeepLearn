@@ -17,17 +17,20 @@ To add a layer to the model, one must create a unique pointer to the abstract __
    #define L std::unique_ptr<Layer>  
    
    model->add(L {new Embedding (250, 100, 0.001, 1e-8)});
+   
    model->add(L {new LSTM (2500)});
 ```
 
-Once all layers are defined and the model is wished to be trained, it is required to first be compiled.   
+Once all layers are __defined__ and the model is wished to be __trained__, it is __required__ to first be __compiled__.   
 
 ```c++
    #define dim2d Eigen::DSizes<ptrdiff_t, 2> 
    
-   // input shape, epochs, batch size, cost function
+   // input shape, epochs = optional (default to 1), batch size = optional, cost function = optional (default to mean_squared_error)
    model->compile(dim2d {1, 100}, 100, 100, "cross_entropy_error");        
+   
    model->fit(X_train, Y_train);                                           // train
+   
    model->evaluate(X_test, Y_test)                                         // test
 ```
 
@@ -40,20 +43,35 @@ Layers can be created separately as well and are required to be initialized firs
    // LSTM (neurons, learning rate, activation, recurrent activation, optimization rate)
    L l1 { new LSTM (100) };                                 
    
-   l0->init(dim2d {1, 100});           // init requires input shape                          
+   l0->init(dim2d {1, 100});           // init requires input shape 
+   
    l1->init(l0->Get2dOutputShape());
 ```
-
-Once training is done, it is possible to save the model.
+__Training__ can be done in two ways: __sequence__ or __non-sequence__
 
 ```c++
-   model->save_model("saved_model.txt");
+   model->fit(X_train, Y_train);                // non-sequence training
+   
+   model->fit_sequence(X_train, Y_train);       // sequence training
+```
+
+Once training is done, it is possible to __save__ the model. However, it must be __compiled__.
+
+```c++
+   model->compile(....);
+   
+   model->save_model("saved_model.txt");                 // good
+   
+   Sequential new_model;
+   
+   new_model.save_model("new_saved_model.txt");          // error
  ```
 
-It is also possible to load a pre-trained model as well.
+It is also possible to load a pre-trained model as well but requiring that the object is not __compiled__.
 
 ```c++
-   model->load_model("saved_model.txt", 1000, 1000);        // file path,  epochs = optional, batch size = optional
+   // file path,  epochs = optional, batch size = optional
+   model->load_model("saved_model.txt", 1000, 1000);        
  ```
 
 A predict method is included as well.
