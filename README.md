@@ -1,9 +1,9 @@
 # CPP-DeepLearn
 
-DPP is a deep learning library built in c++ using Eigen and thread library. It provides an easy way to create neural networks similar to that of keras. 
+__DPP__ is a C++ deep learning library built using Eigen and thread library. It provides an easy way to create neural networks similar to that of keras. 
 
-**Usage**     
-To create a model, one must first construct the sequential object.
+## Usage    
+To create a model, one must first construct the __sequential__ class.
 
 ```c++
    std::unique_ptr<Sequential> model {new Sequential()}; 
@@ -11,7 +11,7 @@ To create a model, one must first construct the sequential object.
    Sequential model;
 ```
 
-To create layers of the network, one must create a unique pointer to the abstract ***Layer*** class while setting it to the desired object.
+To add a layer to the model, one must create a unique pointer to the abstract __Layer__ class while setting it to the desired object.
     
 ```c++
    #define L std::unique_ptr<Layer>  
@@ -29,7 +29,8 @@ Once all layers are defined and the model is wished to train, it is required to 
    model->fit(X_train, Y_train);       // train
    model->evaluate(X_test, Y_test)     // test
 ```
+## Available Classes
 
-_Classes_ | _Methods_
+__Classes__ | __Methods__
 ------------ | -------------
-Sequential | Sequential() <br /> summary() <br /> add(std::unique_ptr<Layer> &&) <br /> add(std::unique_ptr<Layer> &)
+__Sequential__ | __Sequential__() <br /> __summary__() <br /> __add__(std::unique_ptr<Layer> &&) <br /> __add__(std::unique_ptr<Layer> &) <br /> __compile__(const Eigen::DSizes<ptrdiff_t, 2>, const int, const int, const std::string) <br /> __compile__(const Eigen::DSizes<ptrdiff_t, 3>, const int, const int, const std::string) <br /> __compile__(const Eigen::DSizes<ptrdiff_t, 4>, const int, const int, const std::string) <br /> __fit__(const std::vector<Eigen::MatrixXf> &, const std::vector<Eigen::MatrixXf> &) <br /> __fit__(const std::vector<Eigen::Tensor<float, 3>> &, const std::vector<Eigen::Tensor<float, 3>> &) <br /> __fit__(const std::vector<Eigen::Tensor<float, 4>> &, const std::vector<Eigen::Tensor<float, 4>> &) 
