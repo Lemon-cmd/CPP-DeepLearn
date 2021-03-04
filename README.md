@@ -25,10 +25,23 @@ Once all layers are defined and the model is wished to train, it is required to 
 ```c++
    #define dim2d Eigen::DSizes<ptrdiff_t, 2> 
    
-   model->compile(dim2d {1, 100}, 100, 100, "cross_entropy_error");
+   model->compile(dim2d {1, 100}, 100, 100, "cross_entropy_error");        // input shape, epochs, batch size, cost function
    model->fit(X_train, Y_train);       // train
    model->evaluate(X_test, Y_test)     // test
 ```
+
+Layers can be created separately as well and are required to be initialized first before trainning.
+
+```c++
+   
+   L l0 { new Dense (100) };        // Dense (neurons)   
+   L l1 { new LSTM (100) };
+   
+   l0->init(dim2d {1, 100});           // init requires input shape
+   l1->init(l0->Get2dOutputShape());
+```
+
+
 ## Available Classes
 
 |__Classes__ | __Methods__ | 
