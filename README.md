@@ -1,5 +1,6 @@
 # CPP-DeepLearn
-Template for C++ neural network variants built using the Eigen Library
+
+Deep Learning C++ Library Built with Eigen 
 
 
 **Usage**     
