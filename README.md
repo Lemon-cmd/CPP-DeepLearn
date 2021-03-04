@@ -3,6 +3,8 @@
 __DPP__ is a C++ deep learning library built using Eigen and thread library. It provides an easy way to create neural networks similar to that of keras. 
 
 ## Usage    
+__Note__: All classes exist under the namespace __dpp__.
+
 To create a model, one must first construct the __sequential__ class.
 
 ```c++
@@ -50,6 +52,15 @@ Layers can be created separately as well and are required to be __initialized__ 
    
    l1->init(l0->Get2dOutputShape());
 ```
+
+Layer variants are separated into three types: __2D__, __3D__, and __4D__. These types cannot be used together as they utilize different data structure: __Eigen::MatrixXf__, __Eigen::Tensor<float, 3>__, and __Eigen::Tensor<float, 4>__.
+
+```c++
+   model->add { new Dense (100) };
+   
+   model->add { new Dense2D (100) };         // error
+```
+
 __Training__ can be done in two ways: __sequence__ or __non-sequence__
 
 ```c++
@@ -82,7 +93,6 @@ A predict method is included as well.
 ```c++
    model->predict(sentence, expect_result);
 ```
-
 
 ## Available Classes
 
