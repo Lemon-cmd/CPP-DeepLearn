@@ -44,6 +44,18 @@ Layers can be created separately as well and are required to be initialized firs
    l1->init(l0->Get2dOutputShape());
 ```
 
+Once training is done, it is possible to save the model.
+
+```c++
+   model->save_model("saved_model.txt");
+ ```
+
+It is also possible to load a pre-trained model as well.
+
+```c++
+   model->load_model("saved_model.txt");
+```
+
 
 ## Available Classes
 
