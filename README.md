@@ -20,7 +20,7 @@ To add a layer to the model, one must create a unique pointer to the abstract __
    model->add(L {new LSTM (2500)});
 ```
 
-Once all layers are defined and the model is wished to train, it is required to first be compiled.   
+Once all layers are defined and the model is wished to be trained, it is required to first be compiled.   
 
 ```c++
    #define dim2d Eigen::DSizes<ptrdiff_t, 2> 
