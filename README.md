@@ -53,7 +53,13 @@ Once training is done, it is possible to save the model.
 It is also possible to load a pre-trained model as well.
 
 ```c++
-   model->load_model("saved_model.txt");
+   model->load_model("saved_model.txt", 1000, 1000);        // file path,  epochs = optional, batch size = optional
+ ```
+
+A predict method is included as well.
+
+```c++
+   model->predict(sentence, expect_result);
 ```
 
 
