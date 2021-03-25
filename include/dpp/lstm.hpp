@@ -511,10 +511,10 @@ class LSTM : public Layer {
 				dx_weight_[2] = dx_weight_[2] + (input_.col(s) * dhog_.row(s));
 				dx_weight_[3] = dx_weight_[3] + (input_.col(s) * dhmg_.row(s));
 				
-				dh_weight_[0] = dh_weight_[0] + (state_[2].col(s) * dhfg_.row(s));
-				dh_weight_[1] = dh_weight_[1] + (state_[2].col(s) * dhig_.row(s));
-				dh_weight_[2] = dh_weight_[2] + (state_[2].col(s) * dhog_.row(s));
-				dh_weight_[3] = dh_weight_[3] + (state_[2].col(s) * dhmg_.row(s));
+				dh_weight_[0] = dh_weight_[0] + (state_[3].col(s) * dhfg_.row(s));
+				dh_weight_[1] = dh_weight_[1] + (state_[3].col(s) * dhig_.row(s));
+				dh_weight_[2] = dh_weight_[2] + (state_[3].col(s) * dhog_.row(s));
+				dh_weight_[3] = dh_weight_[3] + (state_[3].col(s) * dhmg_.row(s));
 
 				dhp = dhfg_.row(s) * h_weight_[0] + dhig_.row(s) * h_weight_[1] + dhog_.row(s) * h_weight_[2] + dhmg_.row(s) * h_weight_[3];
 
@@ -537,10 +537,10 @@ class LSTM : public Layer {
 					dx_weight_[3] = dx_weight_[3] + (input_.col(t) * dtmg);
 					dx_weight_[2] = dx_weight_[2] + (input_.col(t) * dtog);
 
-					dh_weight_[0] = dh_weight_[0] + (state_[2].col(t) * dtfg);
-					dh_weight_[1] = dh_weight_[1] + (state_[2].col(t) * dtig);
-					dh_weight_[3] = dh_weight_[3] + (state_[2].col(t) * dtmg);
-					dh_weight_[2] = dh_weight_[2] + (state_[2].col(t) * dtog);
+					dh_weight_[0] = dh_weight_[0] + (state_[3].col(t) * dtfg);
+					dh_weight_[1] = dh_weight_[1] + (state_[3].col(t) * dtig);
+					dh_weight_[3] = dh_weight_[3] + (state_[3].col(t) * dtmg);
+					dh_weight_[2] = dh_weight_[2] + (state_[3].col(t) * dtog);
 					
 					if (t != e + 1) {	
 						dhp = dtfg * h_weight_[0] + dtig * h_weight_[1] + dtog * h_weight_[2] + dtmg * h_weight_[3];
